@@ -1,0 +1,140 @@
+.table-container {
+  display: flex;
+  height: calc(100vh - 130px);
+
+  .table-wrapper {
+    flex: 10;
+    padding: 20px;
+    overflow-y: scroll;
+
+    .table-title {
+      font-size: 30px;
+      color: var(--secondary-color);
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--secondary-color);
+      padding-bottom: 3px;
+      width: max-content;
+    }
+
+    .table {
+      width: 100%;
+      text-align: left;
+      border-collapse: collapse;
+
+      th,
+      td {
+        border: 1px solid var(--gray-color);
+        padding: 10px;
+      }
+
+      th {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+      }
+
+      tr:nth-child(even) {
+        background-color: var(--white-color);
+      }
+
+      tr:hover {
+        background-color: #ddd;
+      }
+
+      .table-image {
+        display: flex;
+        align-items: center;
+
+        .table-user-image {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .table-username {
+          font-weight: 500;
+          font-size: 17px;
+          margin-left: 5px;
+        }
+      }
+
+      .table-button-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        button {
+          border: none;
+          background-color: var(--green-color);
+          color: var(--white-color);
+          border-radius: 5px;
+          font-size: 17px;
+          font-weight: 500;
+          padding: 5px;
+          cursor: pointer;
+
+          &:first-child:hover {
+            background-color: green;
+          }
+
+          &:last-child {
+            background-color: var(--red-color);
+          }
+
+          &:last-child:hover {
+            background-color: red;
+          }
+
+          a {
+            color: var(--white-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .table-container {
+    .table-wrapper {
+      padding: 15px;
+
+      .table {
+        th,
+        td {
+          padding: 5px;
+        }
+
+        .table-image {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .table-button-group {
+          flex-wrap: wrap;
+
+          button {
+            width: 100%;
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .table-container {
+    .table-wrapper {
+      padding: 5px;
+
+      .table {
+        th,
+        td {
+          padding: 2px;
+        }
+      }
+    }
+  }
+}
