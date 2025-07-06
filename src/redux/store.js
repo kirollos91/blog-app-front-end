@@ -15,6 +15,7 @@ const store = configureStore({
     comment: commentReducer,
     password: passwordReducer,
   },
+  devTools: false,
 });
 
 export default store;
