@@ -20,6 +20,7 @@ export function getUserProfile(userId) {
 export function uploadProfilePhoto(newPhoto) {
   return async (dispatch, getState) => {
     try {
+      dispatch(profileActions.setLoading());
       const { data } = await request.post(
         `/api/users/profile/profile-photo-upload`,
         newPhoto,
@@ -30,7 +31,6 @@ export function uploadProfilePhoto(newPhoto) {
       );
       dispatch(profileActions.setProfilePhoto(data.profilePhoto));
       dispatch(authActions.setUserPhoto(data.profilePhoto));
-      toast.success(data.message);
 
       // Modify the user in local storage with new photo
       const user = JSON.parse(localStorage.getItem("userInfo"));
@@ -39,7 +39,11 @@ export function uploadProfilePhoto(newPhoto) {
         "userInfo",
         JSON.stringify({ ...user, profilePhoto: data?.profilePhoto })
       );
+
+      dispatch(profileActions.clearLoading());
+      toast.success(data.message);
     } catch (error) {
+      dispatch(profileActions.clearLoading());
       toast.error(error.response?.data.message);
     }
   };

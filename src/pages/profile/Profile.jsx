@@ -40,6 +40,7 @@ const Profile = () => {
   // form handler submit
   const formSubmitHandler = (e) => {
     e.preventDefault();
+
     if (!file) return toast.warning("There is no file!");
     const formData = new FormData();
     formData.append("image", file);
